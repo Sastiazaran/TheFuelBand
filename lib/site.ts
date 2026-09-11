@@ -8,7 +8,7 @@ export const site = {
     video: "/hero/loop.mp4",
     poster: "/hero/loop-poster.jpg",
   },
-  instagramReelUrl: "https://www.instagram.com/thefuel.official/",
+  instagramReelUrl: "https://www.instagram.com/thefuel.official/reel/Db6nCBvxfwg/",
   socials: {
     instagram: "https://www.instagram.com/thefuel.official/",
     x: "https://x.com/thefuel_oficial",

@@ -33,7 +33,7 @@ export function InstagramReel({ t }: { t: ReelCopy }) {
           <a
             href={site.instagramReelUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="sticker mt-10 inline-flex items-center gap-3 text-xs"
           >
             <span
