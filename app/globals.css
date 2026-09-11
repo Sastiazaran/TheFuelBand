@@ -217,7 +217,9 @@ body {
 .polaroid-chapter .polaroid-shot {
   max-width: none;
   height: 100%;
+  width: 100%;
   aspect-ratio: auto;
+  object-fit: cover;
 }
 
 .polaroid-caption {
@@ -243,11 +245,14 @@ body {
 
 .band-chapter {
   min-height: auto;
+  isolation: isolate;
 }
 
 .band-chapter-sticky {
   position: relative;
   min-height: auto;
+  isolation: isolate;
+  background-color: var(--charcoal);
 }
 
 @media (min-width: 768px) {

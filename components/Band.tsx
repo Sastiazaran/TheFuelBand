@@ -52,7 +52,7 @@ function MemberShot({
           alt={`${member.name} — ${captions[member.id]}`}
           fill
           sizes="(max-width: 768px) 80vw, 34rem"
-          className="polaroid-shot object-cover"
+          className={`polaroid-shot object-cover ${member.id === "beto" ? "object-[20%_center]" : ""}`}
         />
       </PolaroidFrame>
     </div>
@@ -95,8 +95,12 @@ export function Band({
         const wash = index % 2 === 0 ? "stage-wash" : "charcoal-wash";
 
         return (
-          <article key={member.id} className="band-chapter relative">
-            <div className={`band-chapter-sticky grain ${wash} flex items-center pt-20`}>
+          <article
+            key={member.id}
+            className="band-chapter relative"
+            style={{ zIndex: index + 1 }}
+          >
+            <div className={`band-chapter-sticky ${wash} flex items-center pt-20`}>
               <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-24 md:grid-cols-12 md:gap-6">
                 <div className={`md:col-span-5 ${flip ? "md:order-2" : "md:order-1"}`}>
                   <p className="font-headline text-[11px] text-ochre">
