@@ -43,25 +43,27 @@ export const site = {
       id: "asti",
       name: "Asti",
       src: "/band/asti-stage-shirtless.jpg",
-      tilt: -4.2,
+      altSrc: "/band/asti-leather-red.jpg",
+      tilt: -3.2,
+      altTilt: 3.4,
     },
     {
       id: "ati",
       name: "Ati",
       src: "/band/ati-drums-red.jpg",
-      tilt: 3.4,
+      tilt: 2.8,
     },
     {
       id: "beto",
       name: "Beto",
-      src: "/band/beto-bass.jpg",
-      tilt: -2.1,
+      src: null,
+      tilt: -2.4,
     },
     {
       id: "alan",
       name: "Alan",
       src: "/band/alan-jackson-studio.jpg",
-      tilt: 4.8,
+      tilt: 3.6,
     },
   ],
 } as const;
@@ -84,7 +86,8 @@ export const galleryItems = [
 ] as const;
 
 export type GalleryId = (typeof galleryItems)[number]["id"];
-export type MemberId = (typeof site.members)[number]["id"];
+export type Member = (typeof site.members)[number];
+export type MemberId = Member["id"];
 
 export type GalleryItem = {
   id: GalleryId;

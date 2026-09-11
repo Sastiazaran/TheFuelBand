@@ -38,7 +38,7 @@ const galleryCaptions = {
 
 const memberRoles = {
   en: {
-    asti: "Vocals",
+    asti: "Lead Singer",
     ati: "Drums",
     beto: "Bass",
     alan: "Guitar",
@@ -50,6 +50,41 @@ const memberRoles = {
     alan: "Guitarra",
   },
 } satisfies Record<Locale, Record<MemberId, string>>;
+
+const memberTags = {
+  en: {
+    asti: ["Music", "Motorcycles", "Computers"],
+    ati: ["Music", "Atlas FC", "Sports"],
+    beto: ["Music", "Fighting", "Metal"],
+    alan: ["Music", "Dream Theater", "Man United"],
+  },
+  es: {
+    asti: ["Música", "Motos", "Computadoras"],
+    ati: ["Música", "Atlas FC", "Deportes"],
+    beto: ["Música", "Combate", "Metal"],
+    alan: ["Música", "Dream Theater", "Man United"],
+  },
+} satisfies Record<Locale, Record<MemberId, readonly [string, string, string]>>;
+
+const memberCaptions = {
+  en: {
+    asti: "Stage heat",
+    astiAlt: "Red leather",
+    ati: "Kit on fire",
+    beto: "Photo incoming",
+    alan: "Jackson gold",
+  },
+  es: {
+    asti: "Calor de escenario",
+    astiAlt: "Cuero rojo",
+    ati: "Kit al rojo",
+    beto: "Foto en camino",
+    alan: "Jackson de oro",
+  },
+} satisfies Record<
+  Locale,
+  Record<MemberId | "astiAlt", string>
+>;
 
 export const dictionaries = {
   en: {
@@ -88,8 +123,10 @@ export const dictionaries = {
     },
     band: {
       index: "02",
-      title: "The Band",
+      title: "Meet the band",
       kicker: "Polaroids",
+      photoIncoming: "Photo incoming",
+      reserved: "Slot reserved — bass",
     },
     about: {
       index: "03",
@@ -121,6 +158,8 @@ export const dictionaries = {
       home: "Back to THE FUEL",
     },
     memberRoles: memberRoles.en,
+    memberTags: memberTags.en,
+    memberCaptions: memberCaptions.en,
     galleryCaptions: galleryCaptions.en,
   },
   es: {
@@ -161,6 +200,8 @@ export const dictionaries = {
       index: "02",
       title: "La banda",
       kicker: "Polaroids",
+      photoIncoming: "Foto en camino",
+      reserved: "Lugar reservado — bajo",
     },
     about: {
       index: "03",
@@ -192,6 +233,8 @@ export const dictionaries = {
       home: "Volver a THE FUEL",
     },
     memberRoles: memberRoles.es,
+    memberTags: memberTags.es,
+    memberCaptions: memberCaptions.es,
     galleryCaptions: galleryCaptions.es,
   },
 } as const;

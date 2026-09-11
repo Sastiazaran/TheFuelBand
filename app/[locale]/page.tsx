@@ -21,7 +21,12 @@ export default async function HomePage({
     <>
       <Hero locale={locale} t={t.hero} />
       <Music t={t.music} />
-      <Band t={t.band} roles={t.memberRoles} />
+      <Band
+        t={t.band}
+        roles={t.memberRoles}
+        tags={t.memberTags}
+        captions={t.memberCaptions}
+      />
       <About t={t.about} />
       <GalleryTeaser locale={locale} t={t.gallery} captions={t.galleryCaptions} />
       <InstagramReel t={t.reel} />

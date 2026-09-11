@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Oswald, Source_Sans_3 } from "next/font/google";
+import { Bebas_Neue, Oswald, Permanent_Marker, Source_Sans_3 } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -22,6 +22,12 @@ const oswald = Oswald({
 const sourceSans = Source_Sans_3({
   subsets: ["latin", "latin-ext"],
   variable: "--font-source",
+});
+
+const marker = Permanent_Marker({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-marker",
 });
 
 export function generateStaticParams() {
@@ -83,7 +89,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${bebas.variable} ${oswald.variable} ${sourceSans.variable} h-full`}
+      className={`${bebas.variable} ${oswald.variable} ${sourceSans.variable} ${marker.variable} h-full`}
     >
       <body className={`${sourceSans.className} min-h-full bg-charcoal text-bone antialiased`}>
         <a
