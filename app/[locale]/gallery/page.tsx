@@ -15,11 +15,11 @@ export default async function GalleryPage({
   const t = getDictionary(locale);
 
   return (
-    <section className="bg-ink px-6 pb-24 pt-32">
+    <section className="charcoal-wash px-6 pb-24 pt-32">
       <div className="mx-auto max-w-6xl">
         <Reveal variant="strike">
-          <p className="font-headline text-[11px] text-sunset">{t.gallery.index}</p>
-          <h1 className="font-display mt-2 text-6xl text-bone sm:text-7xl">
+          <p className="stamp text-[10px] text-ochre">{t.gallery.index}</p>
+          <h1 className="font-display distress mt-4 text-6xl text-bone sm:text-8xl">
             {t.gallery.title}
           </h1>
           <p className="mt-4 max-w-xl text-bone/75">{t.gallery.pageLead}</p>
