@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Locale } from "@/lib/locales";
 import { site } from "@/lib/site";
 
@@ -13,10 +13,13 @@ type NavCopy = {
   about: string;
   gallery: string;
   skip: string;
+  menu: string;
+  close: string;
 };
 
 export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const other: Locale = locale === "en" ? "es" : "en";
@@ -27,32 +30,73 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
     router.push(`/${next}${stripped === "/" ? "" : stripped}`);
   }
 
-  const links = [
+  const leftLinks = [
     { href: `/${locale}`, label: t.home },
     { href: `/${locale}#music`, label: t.music },
+  ];
+  const rightLinks = [
     { href: `/${locale}#about`, label: t.about },
     { href: `/${locale}/gallery`, label: t.gallery },
   ];
+  const allLinks = [...leftLinks, ...rightLinks];
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="absolute inset-x-0 top-0 z-40">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link href={`/${locale}`} className="flex items-center gap-3">
-          <Image
-            src={site.logo}
-            alt={site.name}
-            width={48}
-            height={48}
-            className="h-12 w-12 object-contain"
-          />
-          <span className="font-display text-2xl text-bone">{site.name}</span>
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
+    <header
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        scrolled || open
+          ? "border-b border-white/10 bg-ink/92 backdrop-blur-sm"
+          : "bg-gradient-to-b from-ink/80 to-transparent"
+      }`}
+    >
+      <div className="relative mx-auto grid h-16 max-w-6xl grid-cols-3 items-center px-6 md:h-20">
+        <nav className="col-start-1 hidden items-center justify-end gap-8 pr-6 md:flex">
+          {leftLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-headline text-[11px] text-bone/80 hover:text-ember"
+              className="nav-link font-headline text-[11px] text-bone/80 hover:text-ember"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <Link
+          href={`/${locale}`}
+          className="col-start-2 justify-self-center"
+          aria-label={site.name}
+        >
+          <Image
+            src={site.wordmark}
+            alt={site.name}
+            width={1200}
+            height={242}
+            priority
+            sizes="200px"
+            className="h-8 w-auto md:h-10"
+          />
+        </Link>
+
+        <div className="col-start-3 hidden items-center justify-start gap-8 pl-6 md:flex">
+          {rightLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="nav-link font-headline text-[11px] text-bone/80 hover:text-ember"
             >
               {link.label}
             </Link>
@@ -65,25 +109,47 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
           >
             {other.toUpperCase()}
           </button>
-        </nav>
+        </div>
+
         <button
           type="button"
-          className="font-headline text-[11px] text-bone md:hidden"
+          className="col-start-3 justify-self-end font-headline text-[11px] text-bone md:hidden"
           aria-expanded={open}
+          aria-label={open ? t.close : t.menu}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "CLOSE" : "MENU"}
+          {open ? t.close : t.menu}
         </button>
       </div>
+
       {open ? (
-        <div className="border-t border-white/10 bg-ink/95 px-6 py-6 md:hidden">
-          <div className="flex flex-col gap-4">
-            {links.map((link) => (
+        <div className="fixed inset-0 z-50 flex flex-col bg-ink md:hidden">
+          <div className="flex h-16 items-center justify-between px-6">
+            <Link href={`/${locale}`} onClick={() => setOpen(false)} aria-label={site.name}>
+              <Image
+                src={site.wordmark}
+                alt={site.name}
+                width={1200}
+                height={242}
+                sizes="160px"
+                className="h-7 w-auto"
+              />
+            </Link>
+            <button
+              type="button"
+              className="font-headline text-[11px] text-ember"
+              onClick={() => setOpen(false)}
+            >
+              {t.close}
+            </button>
+          </div>
+          <nav className="flex flex-1 flex-col items-center justify-center gap-8">
+            {allLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-headline text-sm text-bone"
+                className="font-display text-6xl text-bone hover:text-ember"
               >
                 {link.label}
               </Link>
@@ -94,11 +160,11 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
                 setOpen(false);
                 switchLocale(other);
               }}
-              className="font-headline text-left text-sm text-sunset"
+              className="font-headline mt-4 text-sm text-sunset"
             >
               {other.toUpperCase()}
             </button>
-          </div>
+          </nav>
         </div>
       ) : null}
     </header>

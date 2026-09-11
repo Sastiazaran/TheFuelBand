@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Reveal } from "@/components/Reveal";
 import { galleryItems, type GalleryId, type GalleryItem } from "@/lib/site";
 
 type GalleryCopy = {
@@ -29,25 +30,36 @@ export function GalleryGrid({
     <>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {items.map((item, index) => (
-          <button
+          <Reveal
             key={item.id}
-            type="button"
-            onClick={() => setOpen(index)}
-            className={`group relative overflow-hidden bg-asphalt ${
-              item.featured ? "col-span-2 aspect-[4/3] md:aspect-[16/10]" : "aspect-square"
-            }`}
+            variant="rise"
+            delayMs={index * 70}
+            className={item.featured ? "col-span-2" : ""}
           >
-            <Image
-              src={item.src}
-              alt={captions[item.id]}
-              fill
-              sizes={item.featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
-              className="object-cover transition duration-500 group-hover:scale-105"
-            />
-            <span className="font-headline absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent p-3 text-left text-[10px] text-bone">
-              {captions[item.id]}
-            </span>
-          </button>
+            <button
+              type="button"
+              onClick={() => setOpen(index)}
+              className={`group relative w-full overflow-hidden bg-asphalt ${
+                item.featured ? "aspect-[4/3] md:aspect-[16/10]" : "aspect-square"
+              }`}
+            >
+              <Image
+                src={item.src}
+                alt={captions[item.id]}
+                fill
+                sizes={
+                  item.featured
+                    ? "(max-width: 768px) 100vw, 50vw"
+                    : "(max-width: 768px) 50vw, 25vw"
+                }
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blood/30 via-transparent to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+              <span className="font-headline absolute bottom-0 left-0 right-0 bg-gradient-to-t from-ink/80 to-transparent p-3 text-left text-[10px] text-bone">
+                {captions[item.id]}
+              </span>
+            </button>
+          </Reveal>
         ))}
       </div>
       {active ? (
@@ -57,7 +69,10 @@ export function GalleryGrid({
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative max-h-[90vh] w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative max-h-[90vh] w-full max-w-4xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Image
               src={active.src}
               alt={captions[active.id]}
@@ -94,15 +109,15 @@ export function GalleryTeaser({
   const preview = galleryItems.slice(0, 6);
 
   return (
-    <section className="bg-ink px-6 py-24">
+    <section id="gallery" className="bg-ink px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex items-end justify-between gap-4">
-          <div>
+          <Reveal variant="strike">
             <p className="font-headline text-[11px] text-sunset">
               {t.index} / {t.title}
             </p>
             <h2 className="font-display mt-2 text-5xl text-bone sm:text-6xl">{t.title}</h2>
-          </div>
+          </Reveal>
           <Link
             href={`/${locale}/gallery`}
             className="font-headline text-[11px] text-ember underline-offset-4 hover:underline"

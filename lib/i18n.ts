@@ -31,7 +31,7 @@ const galleryCaptions = {
 export const dictionaries = {
   en: {
     meta: {
-      title: "THE FUEL · HARD ROCK",
+      title: "THE FUEL",
       description:
         "THE FUEL — hard rock with classic muscle and modern grit. Singles Get Away and Don’t Disappoint Me out now. Next: The Girl Who Likes Rock and Roll.",
     },
@@ -41,14 +41,17 @@ export const dictionaries = {
       about: "About",
       gallery: "Gallery",
       skip: "Skip to content",
+      menu: "Menu",
+      close: "Close",
     },
     hero: {
-      kicker: "THE FUEL · HARD ROCK",
+      kicker: "the fuel",
       title: "THE FUEL",
-      genre: "HARD ROCK",
+      genre: "the fuel",
       lead: "Classic muscle. Modern grit. No apology.",
       ctaMusic: "Singles",
       ctaGallery: "Gallery",
+      scroll: "Scroll",
     },
     music: {
       index: "01",
@@ -63,8 +66,15 @@ export const dictionaries = {
       title: "The Band",
       body: "THE FUEL is built on classic hard rock muscle and a modern charge — loud, lean, restless. Grit in the riffs, heat in the hooks, no polish for polish’s sake. Just a redline pulse and songs that don’t ask permission.",
     },
-    gallery: {
+    reel: {
       index: "03",
+      kicker: "Instagram",
+      title: "Latest reel",
+      body: "Fresh heat from @thefuel.official.",
+      cta: "Watch the reel",
+    },
+    gallery: {
+      index: "04",
       title: "Gallery",
       cta: "See it all",
       pageLead: "Covers, members, sunset miles.",
@@ -83,7 +93,7 @@ export const dictionaries = {
   },
   es: {
     meta: {
-      title: "THE FUEL · HARD ROCK",
+      title: "THE FUEL",
       description:
         "THE FUEL — hard rock con músculo clásico y grit moderno. Singles Get Away y Don’t Disappoint Me disponibles. Próximo: The Girl Who Likes Rock and Roll.",
     },
@@ -93,14 +103,17 @@ export const dictionaries = {
       about: "Banda",
       gallery: "Galería",
       skip: "Saltar al contenido",
+      menu: "Menú",
+      close: "Cerrar",
     },
     hero: {
-      kicker: "THE FUEL · HARD ROCK",
+      kicker: "the fuel",
       title: "THE FUEL",
-      genre: "HARD ROCK",
+      genre: "the fuel",
       lead: "Músculo clásico. Grit moderno. Sin pedir perdón.",
       ctaMusic: "Singles",
       ctaGallery: "Galería",
+      scroll: "Bajar",
     },
     music: {
       index: "01",
@@ -115,8 +128,15 @@ export const dictionaries = {
       title: "La banda",
       body: "THE FUEL nace del músculo del hard rock clásico y de una carga moderna — alta, afilada, inquieta. Grit en los riffs, calor en los hooks, sin barniz de más. Solo pulso a fondo y canciones que no piden permiso.",
     },
-    gallery: {
+    reel: {
       index: "03",
+      kicker: "Instagram",
+      title: "Último reel",
+      body: "Fuego nuevo de @thefuel.official.",
+      cta: "Ver el reel",
+    },
+    gallery: {
+      index: "04",
       title: "Galería",
       cta: "Ver todo",
       pageLead: "Portadas, la banda, kilómetros de atardecer.",
