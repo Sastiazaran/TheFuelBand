@@ -43,9 +43,7 @@ export const site = {
       id: "asti",
       name: "Asti",
       src: "/band/asti-stage-shirtless.jpg",
-      altSrc: "/band/asti-leather-red.jpg",
       tilt: -3.2,
-      altTilt: 3.4,
     },
     {
       id: "ati",
@@ -56,7 +54,7 @@ export const site = {
     {
       id: "beto",
       name: "Beto",
-      src: null,
+      src: "/band/beto-bass.jpg",
       tilt: -2.4,
     },
     {

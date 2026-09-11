@@ -69,22 +69,17 @@ const memberTags = {
 const memberCaptions = {
   en: {
     asti: "Stage heat",
-    astiAlt: "Red leather",
     ati: "Kit on fire",
-    beto: "Photo incoming",
+    beto: "Bass heat",
     alan: "Jackson gold",
   },
   es: {
     asti: "Calor de escenario",
-    astiAlt: "Cuero rojo",
     ati: "Kit al rojo",
-    beto: "Foto en camino",
+    beto: "Calor de bajo",
     alan: "Jackson de oro",
   },
-} satisfies Record<
-  Locale,
-  Record<MemberId | "astiAlt", string>
->;
+} satisfies Record<Locale, Record<MemberId, string>>;
 
 export const dictionaries = {
   en: {
@@ -125,8 +120,6 @@ export const dictionaries = {
       index: "02",
       title: "Meet the band",
       kicker: "Polaroids",
-      photoIncoming: "Photo incoming",
-      reserved: "Slot reserved — bass",
     },
     about: {
       index: "03",
@@ -200,8 +193,6 @@ export const dictionaries = {
       index: "02",
       title: "La banda",
       kicker: "Polaroids",
-      photoIncoming: "Foto en camino",
-      reserved: "Lugar reservado — bajo",
     },
     about: {
       index: "03",

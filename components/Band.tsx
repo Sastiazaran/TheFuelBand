@@ -1,5 +1,3 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 import { Motif } from "@/components/Motif";
@@ -10,33 +8,22 @@ type BandCopy = {
   index: string;
   title: string;
   kicker: string;
-  photoIncoming: string;
-  reserved: string;
 };
-
-type Captions = Record<MemberId | "astiAlt", string>;
-
-function publicFileExists(src: string | null | undefined) {
-  if (!src) return false;
-  return existsSync(join(process.cwd(), "public", src.replace(/^\//, "")));
-}
 
 function PolaroidFrame({
   tilt,
   tapeTilt,
   caption,
-  compact = false,
   children,
 }: {
   tilt: number;
   tapeTilt: string;
   caption: string;
-  compact?: boolean;
   children: ReactNode;
 }) {
   return (
     <figure
-      className={`polaroid polaroid-chapter ${compact ? "polaroid-chapter-compact" : ""}`}
+      className="polaroid polaroid-chapter"
       style={{ "--tilt": `${tilt}deg` } as CSSProperties}
     >
       <span className="tape tape-top" style={{ "--tape-tilt": tapeTilt } as CSSProperties} />
@@ -49,67 +36,25 @@ function PolaroidFrame({
 function MemberShot({
   member,
   captions,
-  placeholder,
 }: {
   member: Member;
-  captions: Captions;
-  placeholder: { incoming: string; reserved: string };
+  captions: Record<MemberId, string>;
 }) {
-  const altSrc = "altSrc" in member ? member.altSrc : undefined;
-  const showAlt = publicFileExists(altSrc);
-  const altTilt = "altTilt" in member && member.altTilt ? member.altTilt : 3.4;
-
-  if (!member.src) {
-    return (
-      <div className="relative mx-auto flex w-full max-w-xl justify-center">
-        <PolaroidFrame tilt={member.tilt} tapeTilt="-8deg" caption={captions[member.id]}>
-          <div className="relative flex h-full flex-col items-center justify-center bg-[repeating-linear-gradient(135deg,#2a221c_0_12px,#1c1612_12px_24px)] px-6 text-center">
-            <div className="pointer-events-none absolute inset-3 border border-dashed border-bone/25" />
-            <p className="font-headline relative text-[10px] tracking-[0.28em] text-ochre">
-              {placeholder.incoming}
-            </p>
-            <p className="relative mt-3 max-w-[10rem] text-sm text-bone/70">{placeholder.reserved}</p>
-          </div>
-        </PolaroidFrame>
-      </div>
-    );
-  }
-
   return (
-    <div className="relative mx-auto flex w-full max-w-xl items-start justify-center">
-      {showAlt && altSrc ? (
-        <div className="pointer-events-none absolute -right-2 top-10 z-0 hidden sm:block md:-right-8">
-          <PolaroidFrame
-            compact
-            tilt={altTilt}
-            tapeTilt="11deg"
-            caption={captions.astiAlt}
-          >
-            <Image
-              src={altSrc}
-              alt={captions.astiAlt}
-              fill
-              sizes="220px"
-              className="polaroid-shot object-cover"
-            />
-          </PolaroidFrame>
-        </div>
-      ) : null}
-      <div className="relative z-10 w-full">
-        <PolaroidFrame
-          tilt={member.tilt}
-          tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
-          caption={captions[member.id]}
-        >
-          <Image
-            src={member.src}
-            alt={`${member.name} — ${captions[member.id]}`}
-            fill
-            sizes="(max-width: 768px) 80vw, 34rem"
-            className="polaroid-shot object-cover"
-          />
-        </PolaroidFrame>
-      </div>
+    <div className="relative mx-auto flex w-full max-w-xl justify-center">
+      <PolaroidFrame
+        tilt={member.tilt}
+        tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
+        caption={captions[member.id]}
+      >
+        <Image
+          src={member.src}
+          alt={`${member.name} — ${captions[member.id]}`}
+          fill
+          sizes="(max-width: 768px) 80vw, 34rem"
+          className="polaroid-shot object-cover"
+        />
+      </PolaroidFrame>
     </div>
   );
 }
@@ -123,7 +68,7 @@ export function Band({
   t: BandCopy;
   roles: Record<MemberId, string>;
   tags: Record<MemberId, readonly string[]>;
-  captions: Captions;
+  captions: Record<MemberId, string>;
 }) {
   return (
     <section id="band" className="relative text-bone">
@@ -172,11 +117,7 @@ export function Band({
                   </ul>
                 </div>
                 <div className={`order-first md:col-span-7 ${flip ? "md:order-1" : "md:order-2"}`}>
-                  <MemberShot
-                    member={member}
-                    captions={captions}
-                    placeholder={{ incoming: t.photoIncoming, reserved: t.reserved }}
-                  />
+                  <MemberShot member={member} captions={captions} />
                 </div>
               </div>
             </div>
