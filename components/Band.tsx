@@ -36,7 +36,7 @@ function PolaroidFrame({
 }) {
   return (
     <figure
-      className={`polaroid polaroid-chapter ${compact ? "w-[min(100%,16rem)]" : "w-[min(100%,34rem)]"}`}
+      className={`polaroid polaroid-chapter ${compact ? "polaroid-chapter-compact" : ""}`}
       style={{ "--tilt": `${tilt}deg` } as CSSProperties}
     >
       <span className="tape tape-top" style={{ "--tape-tilt": tapeTilt } as CSSProperties} />
@@ -61,7 +61,7 @@ function MemberShot({
 
   if (!member.src) {
     return (
-      <div className="relative mx-auto flex w-full max-w-[40rem] items-start justify-center">
+      <div className="relative mx-auto flex w-full max-w-xl justify-center">
         <PolaroidFrame tilt={member.tilt} tapeTilt="-8deg" caption={captions[member.id]}>
           <div className="relative flex h-full flex-col items-center justify-center bg-[repeating-linear-gradient(135deg,#2a221c_0_12px,#1c1612_12px_24px)] px-6 text-center">
             <div className="pointer-events-none absolute inset-3 border border-dashed border-bone/25" />
@@ -76,7 +76,7 @@ function MemberShot({
   }
 
   return (
-    <div className="relative mx-auto flex w-full max-w-[40rem] items-start justify-center">
+    <div className="relative mx-auto flex w-full max-w-xl items-start justify-center">
       {showAlt && altSrc ? (
         <div className="pointer-events-none absolute -right-2 top-10 z-0 hidden sm:block md:-right-8">
           <PolaroidFrame
@@ -95,7 +95,7 @@ function MemberShot({
           </PolaroidFrame>
         </div>
       ) : null}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <PolaroidFrame
           tilt={member.tilt}
           tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
@@ -127,9 +127,15 @@ export function Band({
 }) {
   return (
     <section id="band" className="relative text-bone">
-      <div className="charcoal-wash relative flex min-h-[88svh] flex-col justify-end overflow-hidden px-6 pb-16 pt-28">
+      <div className="charcoal-wash relative flex min-h-[88svh] flex-col justify-center overflow-hidden px-6 pb-16 pt-28">
         <Motif kind="guitar" className="-left-6 top-10 h-40 w-40 -rotate-12" />
         <Motif kind="wrench" className="right-4 bottom-8 h-32 w-32 rotate-12 text-rust" />
+        <p
+          aria-hidden
+          className="font-display pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[16vw] leading-none text-bone/[0.07]"
+        >
+          {t.title}
+        </p>
         <Reveal variant="strike" className="relative mx-auto max-w-6xl">
           <p className="font-headline text-[11px] text-ochre">
             {t.index} / {t.kicker}

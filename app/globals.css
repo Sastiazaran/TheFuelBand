@@ -200,6 +200,26 @@ body {
   filter: contrast(1.08) saturate(0.88);
 }
 
+.polaroid-chapter {
+  flex-shrink: 0;
+  width: min(92vw, 36rem);
+  padding: 18px 18px 8px;
+  background: #f7efe0;
+  box-shadow:
+    0 2px 6px rgba(20, 15, 12, 0.14),
+    0 22px 48px rgba(0, 0, 0, 0.42);
+}
+
+.polaroid-chapter-compact {
+  width: min(70vw, 16rem);
+}
+
+.polaroid-chapter .polaroid-shot {
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
 .polaroid-caption {
   font-family: var(--font-oswald), sans-serif;
   letter-spacing: 0.16em;
@@ -208,14 +228,6 @@ body {
   text-align: center;
   margin-top: 10px;
   font-size: 11px;
-}
-
-.polaroid-chapter {
-  padding: 18px 18px 8px;
-  background: #f7efe0;
-  box-shadow:
-    0 2px 6px rgba(20, 15, 12, 0.14),
-    0 22px 48px rgba(0, 0, 0, 0.42);
 }
 
 .polaroid-chapter .polaroid-caption,
