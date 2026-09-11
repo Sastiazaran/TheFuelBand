@@ -10,6 +10,7 @@ import { site } from "@/lib/site";
 type NavCopy = {
   home: string;
   music: string;
+  band: string;
   about: string;
   gallery: string;
   skip: string;
@@ -35,7 +36,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
     { href: `/${locale}#music`, label: t.music },
   ];
   const rightLinks = [
-    { href: `/${locale}#about`, label: t.about },
+    { href: `/${locale}#band`, label: t.band },
     { href: `/${locale}/gallery`, label: t.gallery },
   ];
   const allLinks = [...leftLinks, ...rightLinks];
@@ -58,8 +59,8 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
         scrolled || open
-          ? "border-b border-white/10 bg-ink/92 backdrop-blur-sm"
-          : "bg-gradient-to-b from-ink/80 to-transparent"
+          ? "border-b-4 border-rust bg-charcoal/95"
+          : "bg-gradient-to-b from-ink/85 to-transparent"
       }`}
     >
       <div className="relative mx-auto grid h-16 max-w-6xl grid-cols-3 items-center px-6 md:h-20">
@@ -68,7 +69,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
             <Link
               key={link.href}
               href={link.href}
-              className="nav-link font-headline text-[11px] text-bone/80 hover:text-ember"
+              className="nav-link font-headline text-[11px] text-bone/85 hover:text-ember"
             >
               {link.label}
             </Link>
@@ -96,7 +97,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
             <Link
               key={link.href}
               href={link.href}
-              className="nav-link font-headline text-[11px] text-bone/80 hover:text-ember"
+              className="nav-link font-headline text-[11px] text-bone/85 hover:text-ember"
             >
               {link.label}
             </Link>
@@ -104,7 +105,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
           <button
             type="button"
             onClick={() => switchLocale(other)}
-            className="font-headline text-[11px] text-sunset"
+            className="stamp text-[10px] text-ochre"
             aria-label={other === "es" ? "Español" : "English"}
           >
             {other.toUpperCase()}
@@ -123,7 +124,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
       </div>
 
       {open ? (
-        <div className="fixed inset-0 z-50 flex flex-col bg-ink md:hidden">
+        <div className="charcoal-wash fixed inset-0 z-50 flex flex-col md:hidden">
           <div className="flex h-16 items-center justify-between px-6">
             <Link href={`/${locale}`} onClick={() => setOpen(false)} aria-label={site.name}>
               <Image
@@ -149,7 +150,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-6xl text-bone hover:text-ember"
+                className="font-display distress text-6xl text-bone hover:text-ember"
               >
                 {link.label}
               </Link>
@@ -160,7 +161,7 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
                 setOpen(false);
                 switchLocale(other);
               }}
-              className="font-headline mt-4 text-sm text-sunset"
+              className="stamp mt-4 text-sm text-ochre"
             >
               {other.toUpperCase()}
             </button>

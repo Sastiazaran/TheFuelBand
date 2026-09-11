@@ -85,7 +85,7 @@ export default async function LocaleLayout({
       lang={locale}
       className={`${bebas.variable} ${oswald.variable} ${sourceSans.variable} h-full`}
     >
-      <body className={`${sourceSans.className} min-h-full bg-ink text-bone antialiased`}>
+      <body className={`${sourceSans.className} min-h-full bg-charcoal text-bone antialiased`}>
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-blood focus:px-4 focus:py-2"

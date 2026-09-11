@@ -1,4 +1,6 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
+import { Motif } from "@/components/Motif";
 import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 
@@ -11,21 +13,40 @@ type MusicCopy = {
   comingSoon: string;
 };
 
+const tilts = [-2.4, 1.8, -3.1];
+
 export function Music({ t }: { t: MusicCopy }) {
   return (
-    <section id="music" className="bg-asphalt px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="music" className="charcoal-wash relative overflow-hidden px-6 py-24">
+      <Motif kind="flame" className="right-6 top-8 h-36 w-36 rotate-12 text-ember" />
+      <Motif kind="gas" className="-bottom-4 left-4 h-28 w-28 -rotate-12" />
+      <div className="relative mx-auto max-w-6xl">
         <Reveal variant="strike">
-          <p className="font-headline text-[11px] text-sunset">
+          <p className="font-headline text-[11px] text-ochre">
             {t.index} / {t.title}
           </p>
-          <h2 className="font-display mt-2 text-5xl text-bone sm:text-6xl">{t.title}</h2>
+          <h2 className="font-display distress mt-2 text-5xl text-bone sm:text-7xl">
+            {t.title}
+          </h2>
         </Reveal>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
+        <div className="mt-14 grid gap-10 md:grid-cols-3">
           {site.singles.map((single, index) => (
             <Reveal key={single.id} variant="slam" delayMs={index * 120}>
-              <article className="group flex h-full flex-col border border-white/10 bg-ink">
+              <article
+                className="clipping group flex h-full flex-col"
+                style={{ "--tilt": `${tilts[index] ?? -1}deg` } as CSSProperties}
+              >
                 <div className="relative aspect-square overflow-hidden bg-ink">
+                  <span
+                    className="tape"
+                    style={
+                      {
+                        top: 10,
+                        left: 16,
+                        "--tape-tilt": "-18deg",
+                      } as CSSProperties
+                    }
+                  />
                   {single.cover ? (
                     <Image
                       src={single.cover}
@@ -43,12 +64,12 @@ export function Music({ t }: { t: MusicCopy }) {
                         height={242}
                         className="h-auto w-40 object-contain opacity-90"
                       />
-                      <p className="font-headline mt-4 text-[10px] text-ember">{t.next}</p>
+                      <p className="stamp mt-4 text-[10px] text-ember">{t.next}</p>
                     </div>
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-5">
-                  <p className="font-headline text-[10px] text-sunset">
+                  <p className="font-headline text-[10px] text-ochre">
                     {single.status === "out" ? t.outNow : t.comingSoon}
                   </p>
                   <h3 className="font-display mt-2 text-3xl leading-none text-bone">

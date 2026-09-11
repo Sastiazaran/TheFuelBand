@@ -3,6 +3,7 @@ import { site } from "@/lib/site";
 type FooterCopy = {
   rights: string;
   follow: string;
+  colophon: string;
 };
 
 export function Footer({ t }: { t: FooterCopy }) {
@@ -13,11 +14,12 @@ export function Footer({ t }: { t: FooterCopy }) {
   ];
 
   return (
-    <footer className="border-t border-white/10 bg-ink px-6 py-12">
+    <footer className="charcoal-wash border-t-4 border-rust px-6 py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="font-display text-4xl text-bone">{t.rights}</p>
-          <p className="font-headline mt-2 text-[11px] text-sunset">{site.label}</p>
+          <p className="font-display distress text-5xl text-bone">{t.rights}</p>
+          <p className="font-headline mt-2 text-[11px] text-ochre">{site.label}</p>
+          <p className="mt-3 text-sm text-muted">{t.colophon}</p>
         </div>
         <div>
           <p className="font-headline text-[10px] text-muted">{t.follow}</p>
