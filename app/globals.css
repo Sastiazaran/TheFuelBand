@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #070708;
+  --asphalt: #121214;
+  --paper: #e7dccf;
+  --blood: #c1121f;
+  --sunset: #e85d04;
+  --ember: #ff6b2c;
+  --bone: #f4efe6;
+  --muted: #b7aea3;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-asphalt: var(--asphalt);
+  --color-paper: var(--paper);
+  --color-blood: var(--blood);
+  --color-sunset: var(--sunset);
+  --color-ember: var(--ember);
+  --color-bone: var(--bone);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-source);
+  --font-display: var(--font-bebas);
+  --font-headline: var(--font-oswald);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-source), "Source Sans 3", sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-bebas), "Oswald", sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.font-headline {
+  font-family: var(--font-oswald), sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.tire-rule {
+  height: 3px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blood) 0 10px,
+    transparent 10px 16px
+  );
+}
+
+.paper-wash {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(193, 18, 31, 0.12), transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+}
