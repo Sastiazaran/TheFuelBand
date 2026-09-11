@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
 import { Motif } from "@/components/Motif";
 import { Reveal } from "@/components/Reveal";
@@ -46,10 +47,13 @@ function MemberShot({
         tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
         caption={captions[member.id]}
       >
-        <img
+        <Image
           src={member.src}
           alt={`${member.name} — ${captions[member.id]}`}
-          className={`absolute inset-0 h-full w-full object-cover polaroid-shot ${
+          fill
+          unoptimized
+          sizes="(max-width: 768px) 80vw, 34rem"
+          className={`polaroid-shot object-cover ${
             member.id === "beto" ? "object-[20%_center]" : ""
           }`}
         />
