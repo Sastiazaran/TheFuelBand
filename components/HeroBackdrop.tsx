@@ -16,11 +16,11 @@ export function HeroBackdrop() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-40"
+          className="object-cover"
         />
       ) : (
         <video
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover"
           autoPlay
           muted
           loop
@@ -32,8 +32,6 @@ export function HeroBackdrop() {
           <source src={site.hero.video} type="video/mp4" />
         </video>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/35" />
-      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-blood/40 to-transparent" />
     </>
   );
 }
