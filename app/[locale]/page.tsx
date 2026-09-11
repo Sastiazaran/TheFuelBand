@@ -18,7 +18,7 @@ export default async function HomePage({
 
   return (
     <>
-      <Hero locale={locale} t={t.hero} />
+      <Hero t={t.hero} />
       <div className="slash-edge bg-asphalt" />
       <Music t={t.music} />
       <div className="slash-edge bg-paper" />
