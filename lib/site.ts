@@ -1,8 +1,14 @@
 export const site = {
   name: "THE FUEL",
-  genre: "HARD ROCK",
+  label: "the fuel",
   url: "https://thefuelband.vercel.app",
   logo: "/brand/the-fuel-logo.png",
+  wordmark: "/brand/the-fuel-logo-transparent.png",
+  hero: {
+    video: "/hero/loop.mp4",
+    poster: "/hero/loop-poster.jpg",
+  },
+  instagramReelUrl: "https://www.instagram.com/thefuel.official/",
   socials: {
     instagram: "https://www.instagram.com/thefuel.official/",
     x: "https://x.com/thefuel_oficial",

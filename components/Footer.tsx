@@ -17,7 +17,7 @@ export function Footer({ t }: { t: FooterCopy }) {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-display text-4xl text-bone">{t.rights}</p>
-          <p className="font-headline mt-2 text-[11px] text-sunset">{site.genre}</p>
+          <p className="font-headline mt-2 text-[11px] text-sunset">{site.label}</p>
         </div>
         <div>
           <p className="font-headline text-[10px] text-muted">{t.follow}</p>
