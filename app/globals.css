@@ -1,28 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #070708;
-  --asphalt: #121214;
-  --paper: #e7dccf;
-  --blood: #c1121f;
-  --sunset: #e85d04;
-  --ember: #ff6b2c;
-  --bone: #f4efe6;
-  --muted: #b7aea3;
+  --ink: #140f0c;
+  --charcoal: #1c1612;
+  --asphalt: #231c17;
+  --paper: #eadcc8;
+  --bone: #f4ead8;
+  --blood: #b42318;
+  --stage: #9b1c12;
+  --sunset: #c45a1a;
+  --ember: #e0702a;
+  --rust: #8a3a16;
+  --ochre: #c4a056;
+  --muted: #b6a894;
+  --tape: rgba(214, 176, 92, 0.5);
 }
 
 @theme inline {
   --color-ink: var(--ink);
+  --color-charcoal: var(--charcoal);
   --color-asphalt: var(--asphalt);
   --color-paper: var(--paper);
   --color-blood: var(--blood);
+  --color-stage: var(--stage);
   --color-sunset: var(--sunset);
   --color-ember: var(--ember);
+  --color-rust: var(--rust);
+  --color-ochre: var(--ochre);
   --color-bone: var(--bone);
   --color-muted: var(--muted);
   --font-sans: var(--font-source);
   --font-display: var(--font-bebas);
   --font-headline: var(--font-oswald);
+  --font-hand: var(--font-marker);
 }
 
 html {
@@ -30,24 +40,32 @@ html {
 }
 
 body {
-  background: var(--ink);
+  background: var(--charcoal);
   color: var(--bone);
   font-family: var(--font-source), "Source Sans 3", sans-serif;
 }
 
 .font-display {
   font-family: var(--font-bebas), "Oswald", sans-serif;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .font-headline {
   font-family: var(--font-oswald), sans-serif;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
+.distress {
+  transform: skewX(-7deg);
+  text-shadow:
+    2px 2px 0 var(--stage),
+    -1px 0 0 rgba(0, 0, 0, 0.45);
+}
+
 #music,
+#band,
 #about,
 #reel,
 #gallery {
@@ -63,26 +81,41 @@ body {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.22;
+  z-index: 2;
+  opacity: 0.28;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
-
-.tire-rule {
-  height: 3px;
-  width: 100%;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--blood) 0 10px,
-    transparent 10px 16px
-  );
 }
 
 .paper-wash {
   background-color: var(--paper);
   background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(193, 18, 31, 0.12), transparent 50%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+    radial-gradient(ellipse at 12% 0%, rgba(180, 35, 24, 0.16), transparent 46%),
+    radial-gradient(ellipse at 90% 110%, rgba(196, 160, 86, 0.18), transparent 42%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+}
+
+.charcoal-wash {
+  background-color: var(--charcoal);
+  background-image:
+    radial-gradient(ellipse at 80% 0%, rgba(180, 35, 24, 0.22), transparent 48%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+.stage-wash {
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(224, 112, 42, 0.35), transparent 50%),
+    linear-gradient(180deg, #6b140e 0%, #2a0e0c 55%, #140f0c 100%);
+}
+
+.tire-rule {
+  height: 4px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blood) 0 11px,
+    transparent 11px 17px
+  );
 }
 
 .wordmark-glow {
@@ -99,8 +132,8 @@ body {
   left: 0;
   right: 0;
   bottom: -7px;
-  height: 2px;
-  transform: scaleX(0);
+  height: 3px;
+  transform: scaleX(0) skewX(-18deg);
   transform-origin: left;
   background: var(--ember);
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -108,18 +141,191 @@ body {
 
 .nav-link:hover::after,
 .nav-link:focus-visible::after {
-  transform: scaleX(1);
+  transform: scaleX(1) skewX(-18deg);
 }
 
-.slash-edge {
-  height: 40px;
-  background: linear-gradient(
-    162deg,
-    transparent 46%,
-    var(--blood) 46% 51%,
-    transparent 51%
-  );
-  opacity: 0.45;
+.stamp {
+  display: inline-block;
+  border: 3px solid currentColor;
+  padding: 0.35rem 0.7rem;
+  transform: rotate(-6deg) skewX(-8deg);
+  font-family: var(--font-oswald), sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.sticker {
+  display: inline-block;
+  background: var(--blood);
+  color: var(--bone);
+  padding: 0.7rem 1.15rem;
+  transform: rotate(-2deg) skewX(-8deg);
+  box-shadow: 4px 5px 0 var(--ink);
+  font-family: var(--font-oswald), sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sticker-ghost {
+  background: transparent;
+  color: var(--bone);
+  border: 3px solid var(--bone);
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.35);
+}
+
+.rough-frame {
+  border: 4px solid var(--ink);
+  box-shadow:
+    6px 7px 0 rgba(0, 0, 0, 0.35),
+    inset 0 0 0 3px var(--ochre);
+}
+
+.polaroid {
+  position: relative;
+  background: var(--bone);
+  padding: 12px 12px 42px;
+  box-shadow:
+    4px 6px 0 rgba(20, 15, 12, 0.45),
+    0 18px 30px rgba(0, 0, 0, 0.22);
+  transform: rotate(var(--tilt, -2deg));
+}
+
+.polaroid img,
+.polaroid .polaroid-shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: contrast(1.08) saturate(0.88);
+}
+
+.polaroid-chapter {
+  flex-shrink: 0;
+  width: min(92vw, 36rem);
+  padding: 18px 18px 8px;
+  background: #f7efe0;
+  box-shadow:
+    0 2px 6px rgba(20, 15, 12, 0.14),
+    0 22px 48px rgba(0, 0, 0, 0.42);
+}
+
+.polaroid-chapter-compact {
+  width: min(70vw, 16rem);
+}
+
+.polaroid-chapter .polaroid-shot {
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.polaroid-caption {
+  font-family: var(--font-oswald), sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.polaroid-chapter .polaroid-caption,
+.polaroid-hand {
+  font-family: var(--font-marker), "Permanent Marker", cursive;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  font-size: 1.15rem;
+  margin-top: 0;
+  padding: 16px 8px 20px;
+  color: #2a221c;
+}
+
+.band-chapter {
+  min-height: auto;
+}
+
+.band-chapter-sticky {
+  position: relative;
+  min-height: auto;
+}
+
+@media (min-width: 768px) {
+  .band-chapter {
+    min-height: 185svh;
+  }
+
+  .band-chapter-sticky {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+  }
+}
+
+.tape {
+  position: absolute;
+  height: 18px;
+  width: 78px;
+  background: var(--tape);
+  mix-blend-mode: multiply;
+  transform: rotate(var(--tape-tilt, -8deg));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.tape-top {
+  top: -8px;
+  left: 50%;
+  margin-left: -39px;
+}
+
+.clipping {
+  background: var(--charcoal);
+  border: 3px solid var(--bone);
+  box-shadow: 7px 8px 0 var(--rust);
+  transform: rotate(var(--tilt, -1.5deg));
+}
+
+.torn {
+  position: relative;
+}
+
+.torn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background:
+    linear-gradient(135deg, var(--paper) 33%, transparent 34%),
+    linear-gradient(225deg, var(--paper) 33%, transparent 34%);
+  background-size: 16px 18px;
+  z-index: 1;
+}
+
+.torn-top::before {
+  top: -1px;
+}
+
+.torn-bottom::before {
+  bottom: -1px;
+  transform: scaleY(-1);
+}
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-bebas), "Oswald", sans-serif;
+  font-size: 4.6rem;
+  line-height: 0.8;
+  padding-right: 0.12em;
+  color: var(--blood);
+  transform: skewX(-8deg);
+}
+
+.motif {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.16;
+  color: var(--rust);
 }
 
 .reveal-strike,

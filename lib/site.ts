@@ -8,7 +8,7 @@ export const site = {
     video: "/hero/loop.mp4",
     poster: "/hero/loop-poster.jpg",
   },
-  instagramReelUrl: "https://www.instagram.com/thefuel.official/",
+  instagramReelUrl: "https://www.instagram.com/thefuel.official/reel/Db6nCBvxfwg/",
   socials: {
     instagram: "https://www.instagram.com/thefuel.official/",
     x: "https://x.com/thefuel_oficial",
@@ -38,29 +38,60 @@ export const site = {
       href: null,
     },
   ],
+  members: [
+    {
+      id: "asti",
+      name: "Asti",
+      src: "/band/asti-stage-shirtless.jpg",
+      altSrc: "/band/asti-leather-red.jpg",
+      tilt: -3.2,
+      altTilt: 3.4,
+    },
+    {
+      id: "ati",
+      name: "Ati",
+      src: "/band/ati-drums-red.jpg",
+      tilt: 2.8,
+    },
+    {
+      id: "beto",
+      name: "Beto",
+      src: null,
+      tilt: -2.4,
+    },
+    {
+      id: "alan",
+      name: "Alan",
+      src: "/band/alan-jackson-studio.jpg",
+      tilt: 3.6,
+    },
+  ],
 } as const;
 
 export const galleryItems = [
-  { id: "get-away", src: "/covers/get-away.jpg", featured: true },
-  {
-    id: "dont-disappoint-me",
-    src: "/covers/dont-disappoint-me.jpg",
-    featured: true,
-  },
-  { id: "vocals", src: "/gallery/vocals.jpg", featured: false },
-  { id: "guitar", src: "/gallery/guitar.jpg", featured: false },
-  { id: "drums", src: "/gallery/drums.jpg", featured: false },
-  { id: "bass", src: "/gallery/bass.jpg", featured: false },
-  { id: "redline", src: "/gallery/redline.jpg", featured: false },
-  { id: "sunset-run", src: "/gallery/sunset-run.jpg", featured: false },
-  { id: "plate", src: "/gallery/plate.jpg", featured: false },
-  { id: "horizon", src: "/gallery/horizon.jpg", featured: false },
+  { id: "studio-jackson-v", src: "/gallery/01-studio-jackson-v.jpg", featured: true, tilt: -2.4 },
+  { id: "duo-guitar-energy", src: "/gallery/02-duo-guitar-energy.jpg", featured: true, tilt: 1.8 },
+  { id: "horns-duo-bts", src: "/gallery/03-horns-duo-bts.jpg", featured: false, tilt: 2.6 },
+  { id: "street-horns-brand", src: "/gallery/04-street-horns-brand.jpg", featured: false, tilt: -1.7 },
+  { id: "portrait-long-hair", src: "/gallery/05-portrait-long-hair.jpg", featured: false, tilt: 3.1 },
+  { id: "finger-gun-brand", src: "/gallery/06-finger-gun-brand.jpg", featured: false, tilt: -2.8 },
+  { id: "doorway-silhouette", src: "/gallery/07-doorway-silhouette.jpg", featured: false, tilt: 1.2 },
+  { id: "merch-the-fuel", src: "/gallery/08-merch-the-fuel.jpg", featured: false, tilt: -3.3 },
+  { id: "sticker-wall-brand", src: "/gallery/09-sticker-wall-brand.jpg", featured: false, tilt: 2.2 },
+  { id: "leather-iem-street", src: "/gallery/10-leather-iem-street.jpg", featured: false, tilt: -1.4 },
+  { id: "night-laugh-bts", src: "/gallery/11-night-laugh-bts.jpg", featured: false, tilt: 3.6 },
+  { id: "night-duo-portrait", src: "/gallery/12-night-duo-portrait.jpg", featured: false, tilt: -2.0 },
+  { id: "portrait-tank-gold-cross", src: "/gallery/13-portrait-tank-gold-cross.jpg", featured: false, tilt: 1.5 },
+  { id: "urban-candid", src: "/gallery/14-urban-candid.jpg", featured: false, tilt: -3.8 },
 ] as const;
 
 export type GalleryId = (typeof galleryItems)[number]["id"];
+export type Member = (typeof site.members)[number];
+export type MemberId = Member["id"];
 
 export type GalleryItem = {
   id: GalleryId;
   src: string;
   featured: boolean;
+  tilt: number;
 };

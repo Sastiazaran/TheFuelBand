@@ -1,32 +1,90 @@
-import type { GalleryId } from "@/lib/site";
+import type { GalleryId, MemberId } from "@/lib/site";
 import type { Locale } from "@/lib/locales";
 
 const galleryCaptions = {
   en: {
-    "get-away": "Get Away",
-    "dont-disappoint-me": "Don’t Disappoint Me",
-    vocals: "Vocals",
-    guitar: "Guitar",
-    drums: "Drums",
-    bass: "Bass",
-    redline: "Redline",
-    "sunset-run": "Sunset run",
-    plate: "THE FUEL",
-    horizon: "Horizon",
+    "studio-jackson-v": "Jackson heat",
+    "duo-guitar-energy": "Two-man wrecking",
+    "horns-duo-bts": "Horns up",
+    "street-horns-brand": "Street charge",
+    "portrait-long-hair": "Long hair, short fuse",
+    "finger-gun-brand": "Point blank",
+    "doorway-silhouette": "Doorway",
+    "merch-the-fuel": "Merch that bites",
+    "sticker-wall-brand": "Sticker wall",
+    "leather-iem-street": "Leather & IEM",
+    "night-laugh-bts": "Night laugh",
+    "night-duo-portrait": "After hours",
+    "portrait-tank-gold-cross": "Gold cross",
+    "urban-candid": "Candid miles",
   },
   es: {
-    "get-away": "Get Away",
-    "dont-disappoint-me": "Don’t Disappoint Me",
-    vocals: "Voz",
-    guitar: "Guitarra",
-    drums: "Batería",
-    bass: "Bajo",
-    redline: "A fondo",
-    "sunset-run": "Hacia el sol",
-    plate: "THE FUEL",
-    horizon: "Horizonte",
+    "studio-jackson-v": "Jackson al rojo",
+    "duo-guitar-energy": "Dúo a romper",
+    "horns-duo-bts": "Cuernos arriba",
+    "street-horns-brand": "Carga en la calle",
+    "portrait-long-hair": "Pelo largo, mecha corta",
+    "finger-gun-brand": "A quemarropa",
+    "doorway-silhouette": "El umbral",
+    "merch-the-fuel": "Merch que muerde",
+    "sticker-wall-brand": "Muro de stickers",
+    "leather-iem-street": "Cuero e IEM",
+    "night-laugh-bts": "Risa de noche",
+    "night-duo-portrait": "Después del show",
+    "portrait-tank-gold-cross": "Cruz de oro",
+    "urban-candid": "Al vuelo",
   },
 } satisfies Record<Locale, Record<GalleryId, string>>;
+
+const memberRoles = {
+  en: {
+    asti: "Lead Singer",
+    ati: "Drums",
+    beto: "Bass",
+    alan: "Guitar",
+  },
+  es: {
+    asti: "Voz",
+    ati: "Batería",
+    beto: "Bajo",
+    alan: "Guitarra",
+  },
+} satisfies Record<Locale, Record<MemberId, string>>;
+
+const memberTags = {
+  en: {
+    asti: ["Music", "Motorcycles", "Computers"],
+    ati: ["Music", "Atlas FC", "Sports"],
+    beto: ["Music", "Fighting", "Metal"],
+    alan: ["Music", "Dream Theater", "Man United"],
+  },
+  es: {
+    asti: ["Música", "Motos", "Computadoras"],
+    ati: ["Música", "Atlas FC", "Deportes"],
+    beto: ["Música", "Combate", "Metal"],
+    alan: ["Música", "Dream Theater", "Man United"],
+  },
+} satisfies Record<Locale, Record<MemberId, readonly [string, string, string]>>;
+
+const memberCaptions = {
+  en: {
+    asti: "Stage heat",
+    astiAlt: "Red leather",
+    ati: "Kit on fire",
+    beto: "Photo incoming",
+    alan: "Jackson gold",
+  },
+  es: {
+    asti: "Calor de escenario",
+    astiAlt: "Cuero rojo",
+    ati: "Kit al rojo",
+    beto: "Foto en camino",
+    alan: "Jackson de oro",
+  },
+} satisfies Record<
+  Locale,
+  Record<MemberId | "astiAlt", string>
+>;
 
 export const dictionaries = {
   en: {
@@ -38,6 +96,7 @@ export const dictionaries = {
     nav: {
       home: "Home",
       music: "Music",
+      band: "Band",
       about: "About",
       gallery: "Gallery",
       skip: "Skip to content",
@@ -48,10 +107,11 @@ export const dictionaries = {
       kicker: "the fuel",
       title: "THE FUEL",
       genre: "the fuel",
+      issue: "Issue 01",
       lead: "Classic muscle. Modern grit. No apology.",
       ctaMusic: "Singles",
       ctaGallery: "Gallery",
-      scroll: "Scroll",
+      scroll: "Flip the page",
     },
     music: {
       index: "01",
@@ -61,34 +121,45 @@ export const dictionaries = {
       next: "Next",
       comingSoon: "Coming soon",
     },
-    about: {
+    band: {
       index: "02",
-      title: "The Band",
-      body: "THE FUEL is built on classic hard rock muscle and a modern charge — loud, lean, restless. Grit in the riffs, heat in the hooks, no polish for polish’s sake. Just a redline pulse and songs that don’t ask permission.",
+      title: "Meet the band",
+      kicker: "Polaroids",
+      photoIncoming: "Photo incoming",
+      reserved: "Slot reserved — bass",
     },
-    reel: {
+    about: {
       index: "03",
-      kicker: "Instagram",
-      title: "Latest reel",
-      body: "Fresh heat from @thefuel.official.",
-      cta: "Watch the reel",
+      title: "Liner notes",
+      body: "THE FUEL is built on classic hard rock muscle and a modern charge — loud, lean, restless. Grit in the riffs, heat in the hooks, no polish for polish’s sake. Just a redline pulse and songs that don’t ask permission.",
     },
     gallery: {
       index: "04",
       title: "Gallery",
       cta: "See it all",
-      pageLead: "Covers, members, sunset miles.",
+      pageLead: "Cured stills. No filler. Tape optional.",
       close: "Close",
+    },
+    reel: {
+      index: "05",
+      kicker: "Instagram",
+      title: "Latest reel",
+      body: "Fresh heat from @thefuel.official.",
+      cta: "Watch the reel",
     },
     footer: {
       rights: "THE FUEL",
       follow: "Follow",
+      colophon: "Printed in the red.",
     },
     notFound: {
       title: "Lost in the dark",
       body: "This page burned out.",
       home: "Back to THE FUEL",
     },
+    memberRoles: memberRoles.en,
+    memberTags: memberTags.en,
+    memberCaptions: memberCaptions.en,
     galleryCaptions: galleryCaptions.en,
   },
   es: {
@@ -100,6 +171,7 @@ export const dictionaries = {
     nav: {
       home: "Inicio",
       music: "Música",
+      band: "Banda",
       about: "Banda",
       gallery: "Galería",
       skip: "Saltar al contenido",
@@ -110,10 +182,11 @@ export const dictionaries = {
       kicker: "the fuel",
       title: "THE FUEL",
       genre: "the fuel",
+      issue: "Número 01",
       lead: "Músculo clásico. Grit moderno. Sin pedir perdón.",
       ctaMusic: "Singles",
       ctaGallery: "Galería",
-      scroll: "Bajar",
+      scroll: "Pasa la página",
     },
     music: {
       index: "01",
@@ -123,34 +196,45 @@ export const dictionaries = {
       next: "Próximo",
       comingSoon: "Próximamente",
     },
-    about: {
+    band: {
       index: "02",
       title: "La banda",
-      body: "THE FUEL nace del músculo del hard rock clásico y de una carga moderna — alta, afilada, inquieta. Grit en los riffs, calor en los hooks, sin barniz de más. Solo pulso a fondo y canciones que no piden permiso.",
+      kicker: "Polaroids",
+      photoIncoming: "Foto en camino",
+      reserved: "Lugar reservado — bajo",
     },
-    reel: {
+    about: {
       index: "03",
-      kicker: "Instagram",
-      title: "Último reel",
-      body: "Fuego nuevo de @thefuel.official.",
-      cta: "Ver el reel",
+      title: "Notas",
+      body: "THE FUEL nace del músculo del hard rock clásico y de una carga moderna — alta, afilada, inquieta. Grit en los riffs, calor en los hooks, sin barniz de más. Solo pulso a fondo y canciones que no piden permiso.",
     },
     gallery: {
       index: "04",
       title: "Galería",
       cta: "Ver todo",
-      pageLead: "Portadas, la banda, kilómetros de atardecer.",
+      pageLead: "Stills curados. Sin relleno. Cinta opcional.",
       close: "Cerrar",
+    },
+    reel: {
+      index: "05",
+      kicker: "Instagram",
+      title: "Último reel",
+      body: "Fuego nuevo de @thefuel.official.",
+      cta: "Ver el reel",
     },
     footer: {
       rights: "THE FUEL",
       follow: "Seguir",
+      colophon: "Impreso en rojo.",
     },
     notFound: {
       title: "Perdido en la oscuridad",
       body: "Esta página se apagó.",
       home: "Volver a THE FUEL",
     },
+    memberRoles: memberRoles.es,
+    memberTags: memberTags.es,
+    memberCaptions: memberCaptions.es,
     galleryCaptions: galleryCaptions.es,
   },
 } as const;
