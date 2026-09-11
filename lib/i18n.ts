@@ -47,7 +47,7 @@ export const dictionaries = {
       title: "THE FUEL",
       genre: "HARD ROCK",
       lead: "Classic muscle. Modern grit. No apology.",
-      ctaMusic: "Singles",
+      ctaMusic: "Music",
       ctaGallery: "Gallery",
     },
     music: {
@@ -99,7 +99,7 @@ export const dictionaries = {
       title: "THE FUEL",
       genre: "HARD ROCK",
       lead: "Músculo clásico. Grit moderno. Sin pedir perdón.",
-      ctaMusic: "Singles",
+      ctaMusic: "Música",
       ctaGallery: "Galería",
     },
     music: {

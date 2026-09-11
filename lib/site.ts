@@ -3,6 +3,7 @@ export const site = {
   genre: "HARD ROCK",
   url: "https://thefuelband.vercel.app",
   logo: "/brand/the-fuel-logo.png",
+  linktree: "https://linktr.ee/TheFuelBand",
   socials: {
     instagram: "https://www.instagram.com/thefuel.official/",
     x: "https://x.com/thefuel_oficial",

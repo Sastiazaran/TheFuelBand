@@ -27,9 +27,13 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
     router.push(`/${next}${stripped === "/" ? "" : stripped}`);
   }
 
-  const links = [
+  const links: {
+    href: string;
+    label: string;
+    external?: boolean;
+  }[] = [
     { href: `/${locale}`, label: t.home },
-    { href: `/${locale}#music`, label: t.music },
+    { href: site.linktree, label: t.music, external: true },
     { href: `/${locale}#about`, label: t.about },
     { href: `/${locale}/gallery`, label: t.gallery },
   ];
@@ -48,15 +52,27 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
           <span className="font-display text-2xl text-bone">{site.name}</span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-headline text-[11px] text-bone/80 hover:text-ember"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {links.map((link) =>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="font-headline text-[11px] text-bone/80 hover:text-ember"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-headline text-[11px] text-bone/80 hover:text-ember"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
           <button
             type="button"
             onClick={() => switchLocale(other)}
@@ -78,16 +94,29 @@ export function Header({ locale, t }: { locale: Locale; t: NavCopy }) {
       {open ? (
         <div className="border-t border-white/10 bg-ink/95 px-6 py-6 md:hidden">
           <div className="flex flex-col gap-4">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="font-headline text-sm text-bone"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="font-headline text-sm text-bone"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="font-headline text-sm text-bone"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
             <button
               type="button"
               onClick={() => {
