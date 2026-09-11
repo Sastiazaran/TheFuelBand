@@ -51,14 +51,14 @@ function MemberShot({
   return (
     <div
       className={`relative mx-auto flex w-full justify-center ${
-        member.id === "beto" ? "max-w-2xl" : "max-w-xl"
+        member.frame === "landscape" ? "max-w-2xl" : "max-w-xl"
       }`}
     >
       <PolaroidFrame
         tilt={member.tilt}
         tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
         caption={captions[member.id]}
-        landscape={member.id === "beto"}
+        landscape={member.frame === "landscape"}
       >
         <Image
           src={member.src}
