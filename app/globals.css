@@ -214,6 +214,10 @@ body {
   width: min(70vw, 16rem);
 }
 
+.polaroid-chapter-wide {
+  width: min(94vw, 40rem, calc((100svh - 11rem) * 1.2));
+}
+
 .polaroid-chapter .polaroid-shot {
   max-width: none;
   height: 100%;

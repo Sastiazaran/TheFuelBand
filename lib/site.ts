@@ -81,6 +81,20 @@ export const galleryItems = [
   { id: "night-duo-portrait", src: "/gallery/12-night-duo-portrait.jpg", featured: false, tilt: -2.0 },
   { id: "portrait-tank-gold-cross", src: "/gallery/13-portrait-tank-gold-cross.jpg", featured: false, tilt: 1.5 },
   { id: "urban-candid", src: "/gallery/14-urban-candid.jpg", featured: false, tilt: -3.8 },
+  { id: "singer-arm-up-blue", src: "/gallery/15-singer-arm-up-blue.jpg", featured: false, tilt: 2.4 },
+  { id: "guitarist-leather-vertical", src: "/gallery/16-guitarist-leather-vertical.jpg", featured: false, tilt: -2.2 },
+  { id: "singer-profile-red-led", src: "/gallery/17-singer-profile-red-led.jpg", featured: false, tilt: 3.3 },
+  { id: "singer-neon-mic-close", src: "/gallery/18-singer-neon-mic-close.jpg", featured: false, tilt: -1.6 },
+  { id: "duo-bass-vocals", src: "/gallery/19-duo-bass-vocals.jpg", featured: false, tilt: 1.9 },
+  { id: "singer-arms-wide-fuel", src: "/gallery/20-singer-arms-wide-fuel.jpg", featured: true, tilt: -2.7 },
+  { id: "beto-bass-spotlight", src: "/gallery/21-beto-bass-spotlight.jpg", featured: false, tilt: 2.9 },
+  { id: "explorer-guitar-dutch", src: "/gallery/22-explorer-guitar-dutch.jpg", featured: false, tilt: -3.4 },
+  { id: "duo-singer-guitar-fuel", src: "/gallery/23-duo-singer-guitar-fuel.jpg", featured: false, tilt: 1.4 },
+  { id: "drummer-pearl-led", src: "/gallery/24-drummer-pearl-led.jpg", featured: false, tilt: -1.8 },
+  { id: "bass-guitar-interaction", src: "/gallery/25-bass-guitar-interaction.jpg", featured: false, tilt: 3.2 },
+  { id: "fist-raise-duo", src: "/gallery/26-fist-raise-duo.jpg", featured: false, tilt: -2.5 },
+  { id: "trio-wide-fuel-logo", src: "/gallery/27-trio-wide-fuel-logo.jpg", featured: true, tilt: 2.0 },
+  { id: "singer-fuel-intensity", src: "/gallery/28-singer-fuel-intensity.jpg", featured: false, tilt: -3.1 },
 ] as const;
 
 export type GalleryId = (typeof galleryItems)[number]["id"];

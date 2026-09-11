@@ -14,20 +14,28 @@ function PolaroidFrame({
   tilt,
   tapeTilt,
   caption,
+  landscape = false,
   children,
 }: {
   tilt: number;
   tapeTilt: string;
   caption: string;
+  landscape?: boolean;
   children: ReactNode;
 }) {
   return (
     <figure
-      className="polaroid polaroid-chapter"
+      className={`polaroid polaroid-chapter ${landscape ? "polaroid-chapter-wide" : ""}`}
       style={{ "--tilt": `${tilt}deg` } as CSSProperties}
     >
       <span className="tape tape-top" style={{ "--tape-tilt": tapeTilt } as CSSProperties} />
-      <div className="relative aspect-[4/5] overflow-hidden bg-asphalt">{children}</div>
+      <div
+        className={`relative overflow-hidden bg-asphalt ${
+          landscape ? "aspect-[3/2]" : "aspect-[4/5]"
+        }`}
+      >
+        {children}
+      </div>
       <figcaption className="polaroid-caption polaroid-hand">{caption}</figcaption>
     </figure>
   );
@@ -41,21 +49,24 @@ function MemberShot({
   captions: Record<MemberId, string>;
 }) {
   return (
-    <div className="relative mx-auto flex w-full max-w-xl justify-center">
+    <div
+      className={`relative mx-auto flex w-full justify-center ${
+        member.id === "beto" ? "max-w-2xl" : "max-w-xl"
+      }`}
+    >
       <PolaroidFrame
         tilt={member.tilt}
         tapeTilt={member.id === "ati" || member.id === "alan" ? "9deg" : "-10deg"}
         caption={captions[member.id]}
+        landscape={member.id === "beto"}
       >
         <Image
           src={member.src}
           alt={`${member.name} — ${captions[member.id]}`}
           fill
           unoptimized
-          sizes="(max-width: 768px) 80vw, 34rem"
-          className={`polaroid-shot object-cover ${
-            member.id === "beto" ? "object-[20%_center]" : ""
-          }`}
+          sizes="(max-width: 768px) 90vw, 40rem"
+          className="polaroid-shot object-cover object-center"
         />
       </PolaroidFrame>
     </div>
