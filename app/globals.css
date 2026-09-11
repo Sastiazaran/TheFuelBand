@@ -230,13 +230,24 @@ body {
 }
 
 .band-chapter {
-  min-height: 185svh;
+  min-height: auto;
 }
 
 .band-chapter-sticky {
-  position: sticky;
-  top: 0;
-  min-height: 100svh;
+  position: relative;
+  min-height: auto;
+}
+
+@media (min-width: 768px) {
+  .band-chapter {
+    min-height: 185svh;
+  }
+
+  .band-chapter-sticky {
+    position: sticky;
+    top: 0;
+    min-height: 100svh;
+  }
 }
 
 .tape {

@@ -36,7 +36,7 @@ function PolaroidFrame({
 }) {
   return (
     <figure
-      className={`polaroid polaroid-chapter ${compact ? "w-[min(100%,14rem)]" : "w-[min(100%,22rem)]"}`}
+      className={`polaroid polaroid-chapter ${compact ? "w-[min(100%,16rem)]" : "w-[min(100%,34rem)]"}`}
       style={{ "--tilt": `${tilt}deg` } as CSSProperties}
     >
       <span className="tape tape-top" style={{ "--tape-tilt": tapeTilt } as CSSProperties} />
@@ -61,7 +61,7 @@ function MemberShot({
 
   if (!member.src) {
     return (
-      <div className="relative mx-auto flex w-full max-w-[28rem] justify-center">
+      <div className="relative mx-auto flex w-full max-w-[40rem] items-start justify-center">
         <PolaroidFrame tilt={member.tilt} tapeTilt="-8deg" caption={captions[member.id]}>
           <div className="relative flex h-full flex-col items-center justify-center bg-[repeating-linear-gradient(135deg,#2a221c_0_12px,#1c1612_12px_24px)] px-6 text-center">
             <div className="pointer-events-none absolute inset-3 border border-dashed border-bone/25" />
@@ -76,7 +76,7 @@ function MemberShot({
   }
 
   return (
-    <div className="relative mx-auto flex w-full max-w-[28rem] items-start justify-center">
+    <div className="relative mx-auto flex w-full max-w-[40rem] items-start justify-center">
       {showAlt && altSrc ? (
         <div className="pointer-events-none absolute -right-2 top-10 z-0 hidden sm:block md:-right-8">
           <PolaroidFrame
@@ -105,7 +105,7 @@ function MemberShot({
             src={member.src}
             alt={`${member.name} — ${captions[member.id]}`}
             fill
-            sizes="(max-width: 768px) 80vw, 22rem"
+            sizes="(max-width: 768px) 80vw, 34rem"
             className="polaroid-shot object-cover"
           />
         </PolaroidFrame>
@@ -127,7 +127,7 @@ export function Band({
 }) {
   return (
     <section id="band" className="relative text-bone">
-      <div className="charcoal-wash relative overflow-hidden px-6 pb-10 pt-28">
+      <div className="charcoal-wash relative flex min-h-[88svh] flex-col justify-end overflow-hidden px-6 pb-16 pt-28">
         <Motif kind="guitar" className="-left-6 top-10 h-40 w-40 -rotate-12" />
         <Motif kind="wrench" className="right-4 bottom-8 h-32 w-32 rotate-12 text-rust" />
         <Reveal variant="strike" className="relative mx-auto max-w-6xl">
@@ -149,7 +149,7 @@ export function Band({
               <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-24 md:grid-cols-12 md:gap-6">
                 <div className={`md:col-span-5 ${flip ? "md:order-2" : "md:order-1"}`}>
                   <p className="font-headline text-[11px] text-ochre">
-                    {String(index + 1).padStart(2, "0")} / {t.kicker}
+                    {String(index + 1).padStart(2, "0")} / {t.title}
                   </p>
                   <h3 className="font-display distress mt-3 text-7xl leading-none sm:text-8xl md:text-9xl">
                     {member.name}
