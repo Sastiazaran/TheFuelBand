@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { site } from "@/lib/site";
 
 export function HeroBackdrop() {
   const [failed, setFailed] = useState(false);
@@ -11,7 +10,7 @@ export function HeroBackdrop() {
     <>
       {failed ? (
         <Image
-          src={site.hero.poster}
+          src="/hero/loop-poster.jpg"
           alt=""
           fill
           priority
@@ -21,15 +20,15 @@ export function HeroBackdrop() {
       ) : (
         <video
           className="absolute inset-0 h-full w-full object-cover opacity-40"
-          autoPlay
           muted
+          autoPlay
           loop
           playsInline
-          poster={site.hero.poster}
+          poster="/hero/loop-poster.jpg"
           onError={() => setFailed(true)}
           aria-hidden
         >
-          <source src={site.hero.video} type="video/mp4" />
+          <source src="/hero/loop.mp4" type="video/mp4" />
         </video>
       )}
       <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/35" />
