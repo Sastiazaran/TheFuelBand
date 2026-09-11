@@ -202,7 +202,7 @@ body {
 
 .polaroid-chapter {
   flex-shrink: 0;
-  width: min(92vw, 36rem);
+  width: min(92vw, 36rem, calc((100svh - 11rem) * 0.72));
   padding: 18px 18px 8px;
   background: #f7efe0;
   box-shadow:

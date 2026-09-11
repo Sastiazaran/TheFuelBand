@@ -151,7 +151,7 @@ export function Band({
 
         return (
           <article key={member.id} className="band-chapter relative">
-            <div className={`band-chapter-sticky grain ${wash} flex items-center`}>
+            <div className={`band-chapter-sticky grain ${wash} flex items-center pt-20`}>
               <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-6 py-24 md:grid-cols-12 md:gap-6">
                 <div className={`md:col-span-5 ${flip ? "md:order-2" : "md:order-1"}`}>
                   <p className="font-headline text-[11px] text-ochre">
